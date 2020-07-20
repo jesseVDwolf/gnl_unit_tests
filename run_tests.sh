@@ -144,7 +144,7 @@ elif [[ "$*" == "malloc" ]]; then
 	echo -e "void *destroy_malloc(size_t i);" >> get_next_line_cpy.h
 
 
-	sed -i 's/get_next_line\.h/get_next_line_cpy\.h/g' fake_get_next_line.c fake_get_next_line_utils.c
+	sed -i.bak 's/get_next_line\.h/get_next_line_cpy\.h/g' fake_get_next_line.c fake_get_next_line_utils.c && rm *.bak
 
 	perl -pi -e 's/([\s\(\)])malloc\(/\1destroy_malloc\(/g' fake_get_next_line.c fake_get_next_line_utils.c	
 
@@ -165,7 +165,7 @@ else
 
 
 	cp ${PATH_GNL}/get_next_line.h get_next_line_cpy.h
-	sed -i 's/GET_NEXT_LINE_H/GET_NEXT_LINE_CPY_H/g' get_next_line_cpy.h
+	sed -i.bak 's/GET_NEXT_LINE_H/GET_NEXT_LINE_CPY_H/g' get_next_line_cpy.h && rm *.bak
 
 	echo -e "void *fake_malloc(size_t i);" >> get_next_line_cpy.h
 	echo -e "void *count_malloc(size_t size);" >> get_next_line_cpy.h
@@ -258,7 +258,7 @@ else
 	cp ${PATH_GNL}/get_next_line.c fake_get_next_line.c
 	cp ${PATH_GNL}/get_next_line_utils.c fake_get_next_line_utils.c
 
-	sed -i 's/get_next_line\.h/get_next_line_cpy\.h/g' fake_get_next_line.c fake_get_next_line_utils.c
+	sed -i.bak 's/get_next_line\.h/get_next_line_cpy\.h/g' fake_get_next_line.c fake_get_next_line_utils.c && rm *.bak
 
 	perl -pi -e 's/([\s\(\)])malloc\(/\1fake_malloc\(/g' fake_get_next_line.c fake_get_next_line_utils.c	
 	
@@ -288,7 +288,7 @@ else
 	cp ${PATH_GNL}/get_next_line.c fake_get_next_line.c
 	cp ${PATH_GNL}/get_next_line_utils.c fake_get_next_line_utils.c
 
-	sed -i 's/get_next_line\.h/get_next_line_cpy\.h/g' fake_get_next_line.c fake_get_next_line_utils.c
+	sed -i.bak 's/get_next_line\.h/get_next_line_cpy\.h/g' fake_get_next_line.c fake_get_next_line_utils.c && rm *.bak
 
 	perl -pi -e 's/([\s\(\)])malloc\(/\1count_malloc\(/g' fake_get_next_line.c fake_get_next_line_utils.c	
 	perl -pi -e 's/([\s\(\)])free\(/\1count_free\(/g' fake_get_next_line.c fake_get_next_line_utils.c	
