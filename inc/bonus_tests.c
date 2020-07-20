@@ -141,9 +141,6 @@ void bonus_test_four()
 
 void bonus_tests(int test_num)
 {
-	char *line;
-
-	line = NULL;
 	if (test_num == 1)
 		bonus_test_one();
 	if (test_num == 2)
